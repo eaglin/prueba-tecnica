@@ -2,20 +2,14 @@ package com.mvabal.prueba_tecnica.spaceships.application;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
-import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.mvabal.prueba_tecnica.controller.RequestSpaceShipDto;
 import com.mvabal.prueba_tecnica.shared.domain.PaginationDto;
 import com.mvabal.prueba_tecnica.spaceships.domain.SpaceShip;
 import com.mvabal.prueba_tecnica.spaceships.domain.SpaceShipRepository;
@@ -49,9 +43,9 @@ public class SpaceShipService {
     }
 
     @CacheEvict(value = "spaceships", allEntries = true)
-    public void save(SpaceShip entity) {
+    public SpaceShip save(SpaceShip entity) {
         // TODO Auto-generated method stub
-        repository.save(entity);
+        return repository.save(entity);
     }
 
 }

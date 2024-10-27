@@ -1,7 +1,5 @@
 package com.mvabal.prueba_tecnica.controller;
 
-import com.mvabal.prueba_tecnica.spaceships.domain.SpaceShip;
-
 public class RequestSpaceShipDto {
 
     private String name;
