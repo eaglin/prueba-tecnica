@@ -4,19 +4,24 @@ import java.util.Optional;
 
 public class PaginationDto {
 
-    Optional<Integer> page;
-    Optional<Integer> limit;
+    Integer page;
+    Integer limit;
 
-    public PaginationDto(Optional<Integer> page, Optional<Integer> limit) {
-        this.page = page;
-        this.limit = limit;
+    public PaginationDto() {
+        this.page = 0;
+        this.limit = 10;
     }
 
-    public Optional<Integer> getPage() {
+    public PaginationDto(Optional<Integer> page, Optional<Integer> limit) {
+        this.page = page.orElse(0);
+        this.limit = limit.orElse(10);
+    }
+
+    public Integer getPage() {
         return page;
     }
 
-    public Optional<Integer> getLimit() {
+    public Integer getLimit() {
         return limit;
     }
 
