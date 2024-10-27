@@ -48,4 +48,10 @@ public class SpaceShipService {
         return repository.save(entity);
     }
 
+    public void deleteById(Long id) {
+        // TODO Auto-generated method stub
+
+        repository.deleteById(id);
+    }
+
 }

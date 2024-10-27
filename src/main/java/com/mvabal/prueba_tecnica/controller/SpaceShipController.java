@@ -13,6 +13,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,6 +72,16 @@ public class SpaceShipController {
 
         SpaceShip response = this.service.save(spaceShip);
         return ResponseEntity.ok(response);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSpaceShip(@PathVariable Long id) throws CustomNotFoundException {
+
+        SpaceShip spaceShip = this.service.findById(id).orElse(null);
+        if (spaceShip == null)
+            throw new CustomNotFoundException(id + ": SpaceShip not found");
+        service.deleteById(id);
 
     }
 
